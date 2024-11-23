@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct Node
+typedef struct node
 {
     int data;
-    struct Node *next;
+    struct node *next;
 } node;
 node *construct(int data)
 {
@@ -27,7 +27,33 @@ node *insertatend(node *head, int data)
     temp->next = dummy;
     return head;
 }
-node *insbeg(node *head, int data)
+node *delete(node *head, int d)
+{
+    if (head == NULL)
+    {
+        return head;
+    }
+    node *temp = head;
+    node *prev = NULL;
+    if (head->data == d)
+    {
+        head = temp->next;
+        free(temp);
+        return head;
+    }
+    while (temp->data != d)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    prev->next = temp->next;
+    temp->next = NULL;
+    free(temp);
+
+    return head;
+}
+node *insertatbeg(node *head, int data)
 {
     if (head == NULL)
     {
@@ -51,10 +77,13 @@ void display(node *head)
 int main()
 {
     node *head = NULL;
-    head = insertatend(head, 5);
-    head = insertatend(head, 5);
-    head = insertatend(head, 5);
-    head = insertatend(head, 5);
-    head = insbeg(head, 1);
+    head = insertatend(head, 12);
+    head = insertatend(head, 14);
+    head = insertatend(head, 16);
+    head = insertatend(head, 11);
+    head = insertatbeg(head, 1);
+    display(head);
+    printf("\n");
+    head = delete(head,14);
     display(head);
 }

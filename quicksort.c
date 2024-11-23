@@ -32,10 +32,10 @@ void quicksort(int arr[], int low, int high)
 }
 int main()
 {
-    int arr[5] = {9, 1, 4, 2, 3};
+    int arr[4] = {3,2,1,4};
     int size = sizeof(arr) / sizeof(arr[0]);
     quicksort(arr, 0, size - 1);
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 4; i++)
         printf("%d ", arr[i]);
     printf("\n");
     printf("%d ", count);
