@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int MAX = 12;
+int MAX = 5;
 typedef struct Stack
 {
     int arr[10];

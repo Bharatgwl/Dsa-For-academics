@@ -35,23 +35,34 @@ void print(Node *head) {
     printf("\n");
 }
 
+/**
+ * @brief Adds two polynomials together and returns the result.
+ * @param head1 The head of the first polynomial.
+ * @param head2 The head of the second polynomial.
+ * @return The head of the resulting polynomial.
+ */
 Node* addPolynomial(Node *head1, Node *head2) {
     Node *resultHead = NULL, *resultTail = NULL;
 
+    /* Loop through both polynomials and create new nodes for the result */
     while (head1 != NULL && head2 != NULL) {
         Node *temp = NULL;
         if (head1->pow == head2->pow) {
+            /* If the powers are the same, add the coefficients */
             temp = createNode(head1->pow, head1->coeff + head2->coeff);
             head1 = head1->next;
             head2 = head2->next;
         } else if (head1->pow > head2->pow) {
+            /* If the power of the first polynomial is greater, use that */
             temp = createNode(head1->pow, head1->coeff);
             head1 = head1->next;
         } else {
+            /* If the power of the second polynomial is greater, use that */
             temp = createNode(head2->pow, head2->coeff);
             head2 = head2->next;
         }
 
+        /* Add the new node to the result */
         if (resultHead == NULL) {
             resultHead = temp;
             resultTail = temp;
@@ -61,6 +72,7 @@ Node* addPolynomial(Node *head1, Node *head2) {
         }
     }
 
+    /* If there are still nodes left in the first polynomial, add them */
     while (head1 != NULL) {
         Node *temp = createNode(head1->pow, head1->coeff);
         resultTail->next = temp;
@@ -68,6 +80,7 @@ Node* addPolynomial(Node *head1, Node *head2) {
         head1 = head1->next;
     }
 
+    /* If there are still nodes left in the second polynomial, add them */
     while (head2 != NULL) {
         Node *temp = createNode(head2->pow, head2->coeff);
         resultTail->next = temp;

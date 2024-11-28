@@ -6,7 +6,7 @@ int main()
     scanf("%d", &a);
     printf("a is : %d", a);
     printf("\n");
-        _QUERY_MSVC_PRINTF_QUIRKS       qqqqqqqqq```sssss   `azqq
+    int*ptr=&a;
 
-    // print("%d", sizeof(a));
+    printf("%zu", sizeof(ptr));
 }

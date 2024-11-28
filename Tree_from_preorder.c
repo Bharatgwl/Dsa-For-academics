@@ -68,8 +68,9 @@ void postorder(Node *root)
         return;
     }
     postorder(root->left);
-    postorder(root->right);
+   
     printf("%d ", root->data);
+     postorder(root->right);
 }
 int main()
 {
